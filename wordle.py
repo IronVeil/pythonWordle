@@ -1,6 +1,16 @@
+# Import random choice module
+from random import choice
+
+# Get all words
+with open("words.txt", "r") as file:
+    wordList = file.read().split()
+
 # Word
-word = list("audio")
+word = list(choice(wordList))
 wordLen = len(word)
+
+# Tells the person length of word
+print("The word is", wordLen, "letters long.\n")
 
 # Check if answered
 answered = False
@@ -41,7 +51,7 @@ while not answered and guesses < wordLen:
     print("".join(answer))
 
     # Is every letter in correct place?
-    if "".join(answer) == "ggggg":
+    if "".join(answer) == "g" * wordLen:
         answered = True
     else:
         guesses += 1
