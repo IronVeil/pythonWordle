@@ -1,19 +1,28 @@
 # Word
 word = list("audio")
+wordLen = len(word)
 
 # Check if answered
 answered = False
+inputted = False
 guesses = 0
 answer = []
 
 # Loop until answered
-while not answered and guesses < 5:
+while not answered and guesses < wordLen:
 
     # User input
-    guess = list(input("Word: "))
+    while not inputted:
+        guess = list(input("Word: "))
+
+        # Makes sure the guess is the correct length
+        if len(guess) != wordLen:
+            print("Incorrect guess, please try again. The length of the word is", wordLen)
+        else:
+            inputted = True
 
     # Check each letter
-    for i in range(5):
+    for i in range(wordLen):
 
         # Is letter in word?
         if guess[i] in word:
@@ -37,6 +46,7 @@ while not answered and guesses < 5:
     else:
         guesses += 1
         answer = []
+        inputted = False
 
 # Correct answer?
 if answered:
